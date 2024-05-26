@@ -5,7 +5,6 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
-  Divider,
   Grid,
   Link,
   TextField,
@@ -13,115 +12,115 @@ import {
 } from "@mui/material";
 import Logo from "../../assets/main-logo.svg";
 import { useState } from "react";
+import CardActions from "@mui/material/CardActions";
 
-export const Login = () => {
-  console.log(Logo);
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   return (
-    //
-
-    <Box
-      sx={{ p: 0 }}
-      maxWidth="350px"
-      maxHeight="100vh"
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <form>
-        <Card>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+    <Box width="25%" p={4}>
+      <Box
+        width="100%"
+        component="div"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <form>
+          <Card
+            sx={{ border: "none", padding: "32px", borderRadius: "20px" }}
+            elevation={5}
           >
-            <CardMedia
-              component="img"
-              image={Logo}
-              alt="logo"
-              sx={{
-                maxWidth: "150px",
-                maxHeight: "60px",
-                objectFit: "contain",
-              }}
-            />
-          </div>
-
-          <CardHeader
-            title={
-              <Typography variant="h6" sx={{ textAlign: "left" }}>
-                Login
-              </Typography>
-            }
-          />
-          <Divider />
-          <CardContent sx={{ py: 4, mt: 2 }}>
-            <Grid
-              container
-              spacing={4}
-              direction="column"
+            <Box
+              component={"div"}
+              display={"flex"}
+              width="100%"
               justifyContent="center"
-              alignItems="center"
             >
-              <Grid xs={12} sm={12} md={12} spacing={4} mb={2}>
-                <TextField
-                  label="Email address"
-                  variant="outlined"
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  error={error}
-                  helperText={error && "Invalid email or password"}
-                  required
-                  fullWidth
-                />
+              <CardMedia
+                component="img"
+                image={Logo}
+                alt="logo"
+                sx={{
+                  paddingTop: "16px",
+                  maxWidth: "150px",
+                  maxHeight: "60px",
+                  objectFit: "contain",
+                }}
+              />
+            </Box>
+
+            <CardHeader
+              title={
+                <Typography variant={"h5"} component="div">
+                  Login
+                </Typography>
+              }
+            />
+            <CardContent>
+              <Grid container spacing={2}>
+                <Grid item sm={12} md={12}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    label={"Email"}
+                    type={"email"}
+                    value={email}
+                    helperText={error && "Email is required"}
+                    onChange={(event) => setEmail(event.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12} md={12}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    label={"Password"}
+                    type={"password"}
+                    value={password}
+                    helperText={error && "Password is required"}
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
+                </Grid>
               </Grid>
-              <Grid xs={12} sm={12} md={12} spacing={4} mb={2}>
-                <TextField
-                  label="Password"
-                  variant="outlined"
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  error={error}
-                  helperText={error && "Invalid email or password"}
-                  required
-                  fullWidth
-                />
-              </Grid>
-              <Grid spacing={4} mb={2}>
-                <Button
-                  variant="contained"
-                  type="submit"
-                  color="primary"
-                  fullWidth
-                  margin="normal"
-                >
-                  SIGN IN
-                </Button>
-              </Grid>
-              <Grid spacing={4} mb={2}>
-                {error && (
-                  <Typography variant="body2" color="error" gutterBottom>
-                    Invalid email or password
+            </CardContent>
+
+            <CardActions sx={{ padding: "16px" }}>
+              <Grid container spacing={1} rowSpacing={2}>
+                <Grid item sm={12} md={12}>
+                  <Button
+                    sx={{ backgroundColor: "#fe5e7f" }}
+                    variant="contained"
+                    type="submit"
+                    // color="primary"
+                    fullWidth
+                    margin="normal"
+                  >
+                    Sign In
+                  </Button>
+                </Grid>
+                <Grid item sm={12} md={12}>
+                  <Typography variant={"caption"}>
+                    Don't have an account? &nbsp;
+                    {
+                      <Link
+                        href="#"
+                        variant="caption"
+                        underline="none"
+                        color={"#fe5e7f"}
+                      >
+                        Create an account
+                      </Link>
+                    }
                   </Typography>
-                )}
+                </Grid>
               </Grid>
-              <Grid spacing={4} sx={{ p: 3 }}>
-                Don't have an account?
-                <Link href="#" variant="body2">
-                  Create an account
-                </Link>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </form>
+            </CardActions>
+          </Card>
+        </form>
+      </Box>
     </Box>
   );
 };
+export default Login;

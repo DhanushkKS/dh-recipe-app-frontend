@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -7,150 +7,171 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import { CardMedia, Grid } from "@mui/material";
+import { Box, CardMedia, Grid } from "@mui/material";
 import Logo from "../../assets/main-logo.svg";
 
-export const Register = () => {
+const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [error, setError] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    setError(!error);
     console.log("Form submitted!");
   };
 
   return (
-    <Card>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+    <Box sx={{ border: "solid 1px red" }} width={"50%"} p={4}>
+      <Box
+        width="100%"
+        component="div"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
       >
-        <CardMedia
-          component="img"
-          image={Logo}
-          alt="logo"
-          sx={{
-            maxWidth: "150px",
-            maxHeight: "60px",
-            objectFit: "contain",
-          }}
-        />
-      </div>
-      <CardHeader
-        title={
-          <Typography variant="h6" gutterBottom>
-            Register
-          </Typography>
-        }
-      />
-      <CardContent>
-        <Grid container spacing={2} direction="row" px={4}>
-          <Grid container spacing={2} xs={6} direction="row">
-            <Grid container xs={12}>
-              <TextField
-                label="First Name"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                value={firstName}
-                onChange={(event) => setFirstName(event.target.value)}
-                required
+        <form>
+          <Card
+            sx={{ border: "none", padding: "32px", borderRadius: "20px" }}
+            elevation={5}
+          >
+            <Box
+              component="div"
+              display="flex"
+              justifyContent="center"
+              width="100%"
+            >
+              <CardMedia
+                component="img"
+                image={Logo}
+                alt="logo"
+                sx={{
+                  paddingTop: "16px",
+                  maxWidth: "150px",
+                  maxHeight: "60px",
+                  objectFit: "contain",
+                }}
               />
-            </Grid>
-            <Grid container xs={12}>
-              <TextField
-                label="Last Name"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                value={lastName}
-                onChange={(event) => setLastName(event.target.value)}
-                required
-              />
-            </Grid>
-            <Grid container xs={12}>
-              <TextField
-                label="Email"
-                variant="outlined"
-                type="email"
-                fullWidth
-                margin="normal"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
-            </Grid>
-            <Grid container xs={12}>
-              <CardActions>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  type="submit"
-                  onClick={handleSubmit}
-                >
-                  Create Account
-                </Button>
-              </CardActions>
-            </Grid>
-          </Grid>
+            </Box>
+            <CardHeader
+              title={
+                <Typography variant={"h5"} component="div">
+                  Register
+                </Typography>
+              }
+            />
+            <CardContent>
+              <Grid container spacing={2}>
+                {/*Render fields here*/}
+                <Grid item xs={6} md={6}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    label={"First Name"}
+                    type={"text"}
+                    value={firstName}
+                    helperText={error && "First Name is required"}
+                    onChange={(event) => setFirstName(event.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={6} md={6}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    label={"Last Name"}
+                    type={"text"}
+                    value={lastName}
+                    helperText={error && "First Name is required"}
+                    onChange={(event) => setLastName(event.target.value)}
+                  />
+                </Grid>
 
-          <Grid container spacing={2} xs={6} direction="row" marginLeft={2}>
-            <Grid xs={12} container m={0} p={0}>
-              <TextField
-                label="Phone Number"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                value={phoneNumber}
-                onChange={(event) => setPhoneNumber(event.target.value)}
-                required
-              />
-            </Grid>
+                <Grid item xs={6} md={6}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    label={"Email"}
+                    type={"email"}
+                    value={email}
+                    helperText={error && "Email is required"}
+                    onChange={(event) => setEmail(event.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={6} md={6}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    label={"Phone Number"}
+                    type={"tel"}
+                    value={phoneNumber}
+                    helperText={error && "Phone Number is required"}
+                    onChange={(event) => setPhoneNumber(event.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={6} md={6}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    label={"Password"}
+                    type={"password"}
+                    value={password}
+                    helperText={error && "Password is Required"}
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
+                </Grid>
 
-            <Grid xs={12} container m={0} p={0}>
-              <TextField
-                label="Password"
-                variant="outlined"
-                type="password"
-                fullWidth
-                margin="normal"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required
-              />
+                <Grid item xs={6} md={6}>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    label={"Confirm Password"}
+                    type={"password"}
+                    value={confirmPassword}
+                    helperText={error && "Confirm Password is required"}
+                    onChange={(event) => setConfirmPassword(event.target.value)}
+                  />
+                </Grid>
+              </Grid>
+            </CardContent>
+            <CardActions sx={{ padding: "16px" }}>
+              <Grid container spacing={1} rowSpacing={2}>
+                <Grid item sm={6} md={6}>
+                  <Button
+                    sx={{ backgroundColor: "#fe5e7f" }}
+                    variant="contained"
+                    type="submit"
+                    margin="normal"
+                    onClick={handleSubmit}
+                  >
+                    Create Account
+                  </Button>
+                </Grid>
+              </Grid>
+            </CardActions>
+            <Grid container spacing={2} mt={2}>
+              <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+                <Typography variant={"caption"}>
+                  Already have an account? &nbsp;
+                  {
+                    <Link
+                      href="#"
+                      variant="caption"
+                      underline="none"
+                      color={"#fe5e7f"}
+                    >
+                      Sign in
+                    </Link>
+                  }
+                </Typography>
+              </Grid>
             </Grid>
-
-            <Grid xs={12} container m={0} p={0}>
-              <TextField
-                label="Confirm Password"
-                variant="outlined"
-                type="password"
-                fullWidth
-                margin="normal"
-                value={confirmPassword}
-                onChange={(event) => setConfirmPassword(event.target.value)}
-                required
-              />
-            </Grid>
-            <Grid xs={12} container m={0} p={0}></Grid>
-          </Grid>
-        </Grid>
-      </CardContent>
-
-      <CardActions>
-        <Link href="#" variant="body2">
-          Already have an account? Sign in
-        </Link>
-      </CardActions>
-    </Card>
+          </Card>
+        </form>
+      </Box>
+    </Box>
   );
 };
+export default Register;

@@ -2,7 +2,7 @@ import CardActions from "@mui/material/CardActions";
 import { Button, Grid, Link, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 
-export const FormFooter = ({ columns, isLogin }) => {
+export const FormFooter = ({ columns, isLogin, fullWidth }) => {
   return (
     <>
       <CardActions sx={{ padding: "16px" }}>
@@ -12,11 +12,11 @@ export const FormFooter = ({ columns, isLogin }) => {
               sx={{ backgroundColor: "#fe5e7f" }}
               variant="contained"
               type="submit"
-              fullWidth
+              fullWidth={fullWidth}
               margin="normal"
             >
               {isLogin && "Sign In"}
-              {!isLogin && "Register"}
+              {!isLogin && "Create Account"}
             </Button>
           </Grid>
         </Grid>
@@ -54,4 +54,5 @@ export const FormFooter = ({ columns, isLogin }) => {
 FormFooter.propTypes = {
   columns: PropTypes.number,
   isLogin: PropTypes.bool,
+  fullWidth: PropTypes.bool,
 };

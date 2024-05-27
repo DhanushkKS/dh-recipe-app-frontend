@@ -5,7 +5,6 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
-  Grid,
   Typography,
 } from "@mui/material";
 import Logo from "../../assets/main-logo.svg";
@@ -17,6 +16,8 @@ export const PrimaryDetailsContainer = ({
   title,
   columns,
   isLogin,
+  onSubmit,
+  fullWidth,
 }) => {
   //
   return (
@@ -28,7 +29,7 @@ export const PrimaryDetailsContainer = ({
         alignItems="center"
         justifyContent="center"
       >
-        <form>
+        <form onSubmit={onSubmit}>
           <Card
             sx={{ border: "none", padding: "32px", borderRadius: "20px" }}
             elevation={5}
@@ -58,11 +59,12 @@ export const PrimaryDetailsContainer = ({
                 </Typography>
               }
             />
-            <CardContent>
-              {children}
-              {/*/Render Form fields here/*/}
-            </CardContent>
-            <FormFooter columns={columns} isLogin={isLogin} />
+            <CardContent>{children}</CardContent>
+            <FormFooter
+              columns={columns}
+              isLogin={isLogin}
+              fullWidth={fullWidth}
+            />
           </Card>
         </form>
       </Box>
@@ -75,4 +77,6 @@ PrimaryDetailsContainer.propTypes = {
   title: PropTypes.string,
   columns: PropTypes.number,
   isLogin: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  fullWidth: PropTypes.bool,
 };

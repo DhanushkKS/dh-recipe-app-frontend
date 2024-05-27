@@ -2,11 +2,16 @@ import { useFormik } from "formik";
 import generateInputField from "../../../helpers/generateInputField.jsx";
 
 const useRequestFormik = () => {
+  //
   const formik = useFormik({
     initialValues: {
       //
+      firstName: "",
+      lastName: "",
       email: "",
+      phoneNumber: "",
       password: "",
+      confirmPassword: "",
     },
     onSubmit: (values) => {
       console.log("onSubmit", values);

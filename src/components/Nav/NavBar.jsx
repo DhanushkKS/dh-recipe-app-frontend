@@ -6,11 +6,10 @@ import {
   ListItemIcon,
   Menu,
   MenuItem,
-  SvgIcon,
   Tooltip,
   Typography,
 } from "@mui/material";
-import { Image, Logout, PersonAdd, Settings } from "@mui/icons-material";
+import { Logout, PersonAdd, Settings } from "@mui/icons-material";
 import { useState } from "react";
 import MainLogo from "../../assets/main-logo.svg"; // Import the SVG file
 

@@ -152,7 +152,14 @@ const Register = () => {
               </Grid>
             </CardActions>
             <Grid container spacing={2} mt={2}>
-              <Grid item xs={12} display={"flex"} justifyContent={"center"}>
+              <Grid
+                item
+                xs={12}
+                md={12}
+                sm={12}
+                display={"flex"}
+                justifyContent={"center"}
+              >
                 <Typography variant={"caption"}>
                   Already have an account? &nbsp;
                   {

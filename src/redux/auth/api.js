@@ -8,21 +8,17 @@ export const authenticationApi = createApi({
   }),
   endpoints: (builder) => ({
     signIn: builder.mutation({
-      query: (token) => ({
+      query: (payload) => ({
         url: "signIn",
         method: HTTP_METHODS.POST,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        body: payload,
       }),
     }),
     register: builder.mutation({
-      query: (token) => ({
+      query: (payload) => ({
         url: "register",
         method: HTTP_METHODS.POST,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        body: payload,
       }),
     }),
   }),

@@ -4,7 +4,6 @@ import { rootMiddleware } from "./rootMiddleware.js";
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => {
-    getDefaultMiddleware().concat([...rootMiddleware]);
-  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat([...rootMiddleware]),
 });

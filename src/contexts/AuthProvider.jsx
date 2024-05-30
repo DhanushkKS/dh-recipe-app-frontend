@@ -21,15 +21,7 @@ const authReducer = (state, action) => {
 };
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
-  const [
-    signIn,
-    {
-      isError: signInIsError,
-      error: signInError,
-      isSuccess: signInIsSuccess,
-      data: signInData,
-    },
-  ] = useSignInMutation();
+
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {

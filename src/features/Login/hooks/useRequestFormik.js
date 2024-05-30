@@ -1,7 +1,21 @@
 import { useFormik } from "formik";
 import generateInputField from "../../../helpers/generateInputField.jsx";
+import { useSignInMutation } from "../../../redux/auth/api.js";
 
 const useRequestFormik = () => {
+  const [
+    signIn,
+    {
+      isError: signInIsError,
+      error: signInError,
+      isSuccess: signInIsSuccess,
+      data: signInData,
+    },
+  ] = useSignInMutation();
+  const onLoginSubmit = (values) => {
+    console.log("actual", values);
+    signIn({ ...values });
+  };
   const formik = useFormik({
     initialValues: {
       //
@@ -9,6 +23,7 @@ const useRequestFormik = () => {
       password: "",
     },
     onSubmit: (values) => {
+      onLoginSubmit(values);
       console.log("onSubmit", values);
     },
   });

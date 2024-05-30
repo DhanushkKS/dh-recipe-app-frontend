@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { AuthContext } from "./AuthContext.js";
 import PropTypes from "prop-types";
+import { useSignInMutation } from "../redux/auth/api.js";
 //constants
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
@@ -41,3 +42,4 @@ AuthProvider.propTypes = {
     PropTypes.node,
   ]),
 };
+export default AuthProvider;

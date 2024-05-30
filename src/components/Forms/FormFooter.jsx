@@ -1,7 +1,7 @@
 import CardActions from "@mui/material/CardActions";
-import { Button, Grid, Link, Typography } from "@mui/material";
+import { Button, Link, Grid, Typography } from "@mui/material";
 import PropTypes from "prop-types";
-
+import { Link as RouterLink } from "react-router-dom";
 export const FormFooter = ({ columns, isLogin, fullWidth }) => {
   return (
     <>
@@ -36,7 +36,8 @@ export const FormFooter = ({ columns, isLogin, fullWidth }) => {
             &nbsp;
             {
               <Link
-                href="#"
+                component={RouterLink}
+                to={isLogin === true ? "/register" : "/login"}
                 variant="caption"
                 underline="none"
                 color={"#fe5e7f"}

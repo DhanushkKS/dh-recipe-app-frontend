@@ -1,13 +1,30 @@
 import { useFormik } from "formik";
 import generateInputField from "../../../helpers/generateInputField.jsx";
 import { useRegisterMutation } from "../../../redux/auth/api.js";
+import { useLocalStorage } from "../../../hooks/useLocalStorage.js";
+import { useEffect } from "react";
 
 const useRequestFormik = () => {
   //
-  const [register, { error }] = useRegisterMutation();
-  const registerOnSubmit = (values) => {
-    register({ user: { telephone: values.phoneNumber, ...values } });
+  const { setItem } = useLocalStorage("user");
+  const [register, { error, data, isLoading, isSuccess, isError }] =
+    useRegisterMutation();
+  const registerOnSubmit = async (values) => {
+    await register({
+      user: { telephone: values.phoneNumber, ...values },
+    }).unwrap();
   };
+  useEffect(() => {
+    if (data?.token) {
+      // console.log("response", data);
+      // window.localStorage.setItem("user", JSON.stringify(data));
+      setItem("user", data);
+    }
+    if (isError) {
+      console.log(error);
+    }
+  }, [setItem, data, error, isError]);
+
   const formik = useFormik({
     initialValues: {
       //
@@ -18,15 +35,19 @@ const useRequestFormik = () => {
       password: "",
       confirmPassword: "",
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       const password = values["password"];
       const { confirmPassword, ...rest } = values;
       if (password !== confirmPassword) {
-        console.log("Passwords don't match");
+        console.error("Passwords don't match");
+        return;
       }
-      console.log("onSubmit", rest);
-      //const telephone = phoneNumber;
-      registerOnSubmit(rest);
+      try {
+        console.log("onSubmit", rest);
+        await registerOnSubmit(rest);
+      } catch (error) {
+        console.log("Failed to register user", error);
+      }
     },
   });
   const renderFields = (field) => {

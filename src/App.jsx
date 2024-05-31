@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/index.js";
+import { Home } from "./features/Home/index.jsx";
 
 function App() {
   const router = createBrowserRouter(
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<LoginPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/home" element={<Home />}></Route>
       </>,
     ),
     //

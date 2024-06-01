@@ -18,6 +18,7 @@ export const PrimaryDetailsContainer = ({
   isLogin,
   onSubmit,
   fullWidth,
+  isLoading,
 }) => {
   //
   return (
@@ -64,6 +65,7 @@ export const PrimaryDetailsContainer = ({
               columns={columns}
               isLogin={isLogin}
               fullWidth={fullWidth}
+              isLoading={isLoading}
             />
           </Card>
         </form>

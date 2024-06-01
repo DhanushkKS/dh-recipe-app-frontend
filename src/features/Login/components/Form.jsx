@@ -5,7 +5,7 @@ import useRequestFormik from "../hooks/useRequestFormik.js";
 import PropTypes from "prop-types";
 
 const Form = ({ columns, isLogin, title, width, fullWidth }) => {
-  const { renderFields, handleChange, handleSubmit } = useRequestFormik();
+  const { renderFields, handleSubmit, isLoading } = useRequestFormik();
   return (
     <>
       <PrimaryDetailsContainer
@@ -15,6 +15,7 @@ const Form = ({ columns, isLogin, title, width, fullWidth }) => {
         columns={columns}
         onSubmit={handleSubmit}
         fullWidth={fullWidth}
+        isLoading={isLoading}
       >
         <Grid container spacing={2}>
           {loginFormDetails.map(({ xs, sm, md, ...item }) => (

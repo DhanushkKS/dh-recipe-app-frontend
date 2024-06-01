@@ -1,13 +1,11 @@
 import { useEffect, useReducer } from "react";
 import { AuthContext } from "./AuthContext.js";
 import PropTypes from "prop-types";
-import { useSignInMutation } from "../redux/auth/api.js";
 //constants
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const initialState = {
   user: null,
-  // token: null,
 };
 const authReducer = (state, action) => {
   switch (action.type) {
@@ -23,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
+    const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       dispatch({ type: LOGIN, payload: user });
     }

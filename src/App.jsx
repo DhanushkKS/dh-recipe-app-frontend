@@ -13,6 +13,8 @@ import { Provider } from "react-redux";
 import { store } from "./store/index.js";
 import { Home } from "./features/Home/index.jsx";
 import { useAuthContext } from "./hooks/useAuthContext.js";
+import { RootLayout } from "./components/RootLayout.jsx";
+import { FavouriteItems } from "./features/Favourite/index.jsx";
 
 function App() {
   //
@@ -23,8 +25,13 @@ function App() {
       <>
         <Route
           path="/"
-          element={user ? <Home /> : <Navigate to="/login" />}
-        ></Route>
+          // element={user ? <Home /> : <Navigate to="/login" />}
+          element={user ? <RootLayout /> : <Navigate to="/login" />}
+        >
+          <Route path={"home"} element={<Home />}></Route>
+          <Route path={"favourites"} element={<FavouriteItems />}></Route>
+        </Route>
+
         <Route
           path="/login"
           element={!user ? <LoginPage /> : <Navigate to="/" />}
@@ -33,7 +40,9 @@ function App() {
           path="/register"
           element={!user ? <RegisterPage /> : <Navigate to="/" />}
         ></Route>
-        {/*<Route path="/home" element={<Home />}></Route>*/}
+        {/*<Route path="home" element={<RootLayout />}>*/}
+        {/*  <Route path="home/" element={<Home />}></Route>*/}
+        {/*</Route>*/}
       </>,
     ),
     //

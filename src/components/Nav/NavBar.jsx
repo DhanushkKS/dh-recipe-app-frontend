@@ -1,8 +1,11 @@
 import {
   Avatar,
   Box,
+  Button,
   Divider,
+  Grid,
   IconButton,
+  Link,
   ListItemIcon,
   Menu,
   MenuItem,
@@ -12,9 +15,10 @@ import {
 import { Logout, PersonAdd, Settings } from "@mui/icons-material";
 import { useState } from "react";
 import MainLogo from "../../assets/main-logo.svg"; // Import the SVG file
-
+import { Link as RouterLink } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
 const MainLogoIcon = (props) => (
-  <img src={MainLogo} alt="logo" style={{ maxWidth: "150px" }} />
+  <img src={MainLogo} alt="logo" style={{ maxWidth: "100px" }} />
 );
 
 export const NavBar = () => {
@@ -30,97 +34,69 @@ export const NavBar = () => {
   return (
     <>
       <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          textAlign: "center",
-          justifyContent: "center",
-          background: "#ffffff",
-        }}
+        component="nav"
+        sx={{ border: "solid 1px red" }}
+        display="flex"
+        width="100%"
+        // p={8}
       >
-        <MainLogoIcon fontSize="large" />{" "}
-        {/* Render the SvgIcon with your logo */}
-        <Typography sx={{ minWidth: 100 }} gutterBottom>
-          Contact
-        </Typography>
-        <Typography sx={{ minWidth: 100 }} gutterBottom>
-          Profile
-        </Typography>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? "account-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
+        <Grid container xs={12} sx={{ border: "solid 1px green" }} px={5}>
+          <Grid item xs={4} sx={{ border: "solid 1px yellow" }}>
+            <MainLogoIcon />
+          </Grid>
+          <Grid container item xs={4} sx={{ border: "solid 1px green" }}>
+            <Grid
+              item
+              xs={6}
+              sx={{ border: "solid 1px red" }}
+              p={2}
+              display="flex"
+              justifyContent={"flex-end"}
+            >
+              <Link
+                component={RouterLink}
+                to={"home"}
+                variant={"text"}
+                href={"#"}
+                sx={{ textTransform: "upperCase" }}
+                underline={"none"}
+                color={"black"}
+              >
+                Home
+              </Link>
+            </Grid>
+            <Grid
+              item
+              xs={6}
+              p={2}
+              display="flex"
+              justifyContent={"flex-start"}
+            >
+              <Link
+                component={RouterLink}
+                to={"favourites"}
+                variant={"text"}
+                href={"#"}
+                sx={{ textTransform: "upperCase" }}
+                underline={"none"}
+                color={"black"}
+              >
+                Favourite
+              </Link>
+            </Grid>
+          </Grid>
+          <Grid
+            p={2}
+            item
+            xs={4}
+            sx={{ border: "solid 1px yellow" }}
+            display="flex"
+            justifyContent={"flex-end"}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-          </IconButton>
-        </Tooltip>
+            <LogoutIcon />
+          </Grid>
+        </Grid>
       </Box>
-      <Menu
-        anchorEl={anchorEl}
-        id="account-menu"
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            mt: 1.5,
-            "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            "&::before": {
-              content: '""',
-              display: "block",
-              position: "absolute",
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: "background.paper",
-              transform: "translateY(-50%) rotate(45deg)",
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-      >
-        <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
-      </Menu>
     </>
   );
 };

@@ -1,6 +1,3 @@
-import { Grid } from "@mui/material";
-import { RecipeCard } from "../../components/RecipeCard/RecipeCard.jsx";
-
 export const FavouriteItems = () => {
   return (
     <>

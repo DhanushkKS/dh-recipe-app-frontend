@@ -5,8 +5,7 @@ import { Box } from "@mui/material";
 export const RootLayout = () => {
   return (
     <>
-      root
-      <Box component="div" mx={20} sx={{ background: "gray" }}>
+      <Box component="div" mx={20} sx={{ border: "dotted 1px" }}>
         <NavBar />
         <main>
           <Outlet />

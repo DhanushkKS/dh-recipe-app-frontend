@@ -1,21 +1,31 @@
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Grid,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from "@mui/material";
 import { RecipeCard } from "../../components/RecipeCard/RecipeCard.jsx";
-import { Grid } from "@mui/material";
-import { useAuthContext } from "../../hooks/useAuthContext.js";
-import { NavBar } from "../../components/Nav/NavBar.jsx";
-import { Outlet } from "react-router-dom";
+import { useHome } from "./hooks/useHome.js";
+import React, { useState } from "react";
+import { CategoryBar } from "./components/CategoryBar.jsx";
+import { RecipePanel } from "../../components/RecipeCard/RecipePanel.jsx";
 
 export const Home = () => {
-  const { user } = useAuthContext();
-  console.log(user && user.email);
+  const { category, handleCategory, user, recipesByCategory, categories } =
+    useHome();
   return (
-    <>
-      home
-      {/*<Grid container spacing={2}>*/}
-      {/*  <RecipeCard />*/}
-      {/*  /!*<RecipeCard />*!/*/}
-      {/*  /!*<RecipeCard />*!/*/}
-      {/*  /!*<RecipeCard />*!/*/}
-      {/*</Grid>*/}
-    </>
+    <React.Fragment>
+      <Box>
+        <CategoryBar
+          categories={categories}
+          handleCategory={handleCategory}
+          category={category}
+        />
+        <RecipePanel recipes={recipesByCategory} category={category} />
+      </Box>
+    </React.Fragment>
   );
 };

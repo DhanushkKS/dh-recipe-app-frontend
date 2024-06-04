@@ -1,7 +1,6 @@
 import "./App.css";
 import { LoginPage } from "./pages/Login/Login.jsx";
 import { RegisterPage } from "./pages/Register/Register.jsx";
-import { Helmet } from "react-helmet-async";
 import {
   createBrowserRouter,
   createRoutesFromElements,

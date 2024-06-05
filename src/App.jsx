@@ -24,6 +24,10 @@ function App() {
       <>
         <Route
           path="/"
+          element={user ? <Navigate to="/home" /> : <Navigate to="/login" />}
+        ></Route>
+        <Route
+          path="/"
           // element={user ? <Home /> : <Navigate to="/login" />}
           element={user ? <RootLayout /> : <Navigate to="/login" />}
         >
@@ -39,9 +43,6 @@ function App() {
           path="/register"
           element={!user ? <RegisterPage /> : <Navigate to="/" />}
         ></Route>
-        {/*<Route path="home" element={<RootLayout />}>*/}
-        {/*  <Route path="home/" element={<Home />}></Route>*/}
-        {/*</Route>*/}
       </>,
     ),
     //

@@ -81,4 +81,5 @@ PrimaryDetailsContainer.propTypes = {
   isLogin: PropTypes.bool,
   onSubmit: PropTypes.func,
   fullWidth: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };

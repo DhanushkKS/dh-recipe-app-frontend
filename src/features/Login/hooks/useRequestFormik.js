@@ -1,10 +1,9 @@
 import { useFormik } from "formik";
 import generateInputField from "../../../helpers/generateInputField.jsx";
 import { useSignInMutation } from "../../../redux/auth/api.js";
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useLocalStorage } from "../../../hooks/useLocalStorage.js";
 import { useNavigate } from "react-router-dom";
-import { debounce } from "lodash/function.js";
 
 const useRequestFormik = () => {
   const navigate = useNavigate();

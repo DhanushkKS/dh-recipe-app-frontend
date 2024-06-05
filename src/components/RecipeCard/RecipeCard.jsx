@@ -1,35 +1,76 @@
 import {
-  Button,
+  Box,
   Card,
   CardContent,
   CardMedia,
+  IconButton,
+  Stack,
+  Tooltip,
   Typography,
 } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
+import PropTypes from "prop-types";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { useState } from "react";
+import { useRecipeCard } from "./hooks/useRecipeCard.js";
 
-export const RecipeCard = (props) => {
+export const RecipeCard = ({ recipe, key, category }) => {
+  const { recipeTitle, isFavourite, handleClick, fullRecipeTitle } =
+    useRecipeCard(recipe);
   return (
-    <>
-      <Card sx={{ maxWidth: 345 }}>
+    <Box m={1} pr={0.5} my={2}>
+      <Card
+        sx={{
+          width: 200,
+          minHeight: 250,
+        }}
+        key={recipe?.idMeal}
+      >
         <CardMedia
-          sx={{ height: 140 }}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          sx={{ height: 140, width: 200 }}
+          image={recipe?.strMealThumb}
           title="green iguana"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+
+        <CardContent sx={{ pl: 1 }}>
+          <Stack direction="row" spacing={1} mb={1} alignItems="center">
+            <Typography
+              variant={"caption"}
+              component="div"
+              textTransform={"uppercase"}
+            >
+              {category}
+            </Typography>
+            <IconButton
+              size={"small"}
+              sx={{ color: "#fe5e7f", p: 0 }}
+              cursor={"pointer"}
+              onClick={handleClick}
+            >
+              {isFavourite ? (
+                <Favorite fontSize="small" />
+              ) : (
+                <FavoriteBorder fontSize={"small"} />
+              )}
+            </IconButton>
+          </Stack>
+
+          <Tooltip title={fullRecipeTitle}>
+            <Typography
+              variant={"body2"}
+              component="div"
+              fontWeight={"600"}
+              fontSize={"0.8rem"}
+            >
+              {recipeTitle}
+            </Typography>
+          </Tooltip>
         </CardContent>
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
       </Card>
-    </>
+    </Box>
   );
+};
+RecipeCard.propTypes = {
+  recipe: PropTypes.object,
+  key: PropTypes.any,
+  category: PropTypes.string,
 };

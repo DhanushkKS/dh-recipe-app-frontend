@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { RecipeCard } from "./RecipeCard.jsx";
 
-export const RecipePanel = ({ recipes, category }) => {
+export const RecipePanel = ({ recipes, category, favourites }) => {
   return (
     <>
       <Box
@@ -14,7 +14,12 @@ export const RecipePanel = ({ recipes, category }) => {
       >
         {recipes &&
           recipes.map((recipe, index) => (
-            <RecipeCard key={index} recipe={recipe} category={category} />
+            <RecipeCard
+              key={index}
+              recipe={recipe}
+              category={category}
+              favourites={favourites}
+            />
           ))}
       </Box>
     </>
@@ -22,4 +27,5 @@ export const RecipePanel = ({ recipes, category }) => {
 };
 RecipePanel.propTypes = {
   recipes: PropTypes.object,
+  favourites: PropTypes.bool,
 };

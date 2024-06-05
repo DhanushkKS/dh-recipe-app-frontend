@@ -6,9 +6,9 @@ export const CategoryBar = ({ categories, category, handleCategory }) => {
   const { activeButtonStyles } = useCategoryBar();
   return (
     <>
-      <Grid container sx={{ border: "solid 1px red" }} my={1}>
+      <Grid container my={1}>
         <ToggleButtonGroup
-          sx={{ border: "1px solid green", justifyContent: "flex-start" }}
+          sx={{ justifyContent: "flex-start" }}
           value={category}
           exclusive
           onChange={handleCategory}

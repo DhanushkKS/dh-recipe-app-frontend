@@ -11,19 +11,11 @@ import {
 import PropTypes from "prop-types";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { useState } from "react";
+import { useRecipeCard } from "./hooks/useRecipeCard.js";
 
 export const RecipeCard = ({ recipe, key, category }) => {
-  const [isFavourite, setIsFavourite] = useState(false);
-  const [recipeId, setRecipeId] = useState("");
-  const handleClick = () => {
-    setIsFavourite(!isFavourite);
-    //  setRecipeId(recipe?.);
-  };
-  const fullRecipeTitle = recipe?.strMeal;
-  const recipeTitle =
-    fullRecipeTitle.length > 40
-      ? `${fullRecipeTitle.slice(0, 37)}...`
-      : `${fullRecipeTitle}`;
+  const { recipeTitle, isFavourite, handleClick, fullRecipeTitle } =
+    useRecipeCard(recipe);
   return (
     <Box m={1} pr={0.5} my={2}>
       <Card
@@ -34,19 +26,13 @@ export const RecipeCard = ({ recipe, key, category }) => {
         key={recipe?.idMeal}
       >
         <CardMedia
-          sx={{ height: 140, width: 200, border: "solid 1px yellow" }}
+          sx={{ height: 140, width: 200 }}
           image={recipe?.strMealThumb}
           title="green iguana"
         />
 
-        <CardContent sx={{ border: "solid 2px pink", pl: 1 }}>
-          <Stack
-            direction="row"
-            spacing={1}
-            mb={1}
-            border={"solid 1px green"}
-            alignItems="center"
-          >
+        <CardContent sx={{ pl: 1 }}>
+          <Stack direction="row" spacing={1} mb={1} alignItems="center">
             <Typography
               variant={"caption"}
               component="div"

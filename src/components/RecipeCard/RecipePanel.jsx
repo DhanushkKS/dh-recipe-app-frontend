@@ -8,7 +8,6 @@ export const RecipePanel = ({ recipes, category }) => {
     <>
       <Box
         component={"div"}
-        sx={{ border: "solid 1px  blue" }}
         display={"flex"}
         flexWrap={"wrap"}
         justifyContent={"flex-start"}

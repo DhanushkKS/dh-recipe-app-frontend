@@ -5,7 +5,14 @@ import { Box } from "@mui/material";
 export const RootLayout = () => {
   return (
     <>
-      <Box component="div" mx={20} sx={{ border: "dotted 1px" }}>
+      <Box
+        component="div"
+        mx={20}
+        mr={24}
+        sx={{
+          border: "dotted 1px",
+        }}
+      >
         <NavBar />
         <main>
           <Outlet />

@@ -1,15 +1,6 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Grid,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from "@mui/material";
-import { RecipeCard } from "../../components/RecipeCard/RecipeCard.jsx";
+import { Box } from "@mui/material";
 import { useHome } from "./hooks/useHome.js";
-import React, { useState } from "react";
+import React from "react";
 import { CategoryBar } from "./components/CategoryBar.jsx";
 import { RecipePanel } from "../../components/RecipeCard/RecipePanel.jsx";
 

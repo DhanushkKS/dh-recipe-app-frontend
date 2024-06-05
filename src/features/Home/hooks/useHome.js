@@ -1,7 +1,6 @@
 import { useAuthContext } from "../../../hooks/useAuthContext.js";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useGetRecipesByCategoryQuery } from "../../../redux/recieps/api.js";
-import { useCategoryBar } from "../components/hooks/useCategoryBar.js";
 
 export const useHome = () => {
   /**<b>If you need more categories, add them to here.</b>*/

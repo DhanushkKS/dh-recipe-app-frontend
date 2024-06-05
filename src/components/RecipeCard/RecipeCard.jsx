@@ -1,20 +1,24 @@
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardMedia,
   IconButton,
   Stack,
-  SvgIcon,
   Tooltip,
   Typography,
 } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
 import PropTypes from "prop-types";
-import { FavoriteBorder, HeartBroken } from "@mui/icons-material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { useState } from "react";
 
 export const RecipeCard = ({ recipe, key, category }) => {
+  const [isFavourite, setIsFavourite] = useState(false);
+  const [recipeId, setRecipeId] = useState("");
+  const handleClick = () => {
+    setIsFavourite(!isFavourite);
+    //  setRecipeId(recipe?.);
+  };
   const fullRecipeTitle = recipe?.strMeal;
   const recipeTitle =
     fullRecipeTitle.length > 40
@@ -27,7 +31,7 @@ export const RecipeCard = ({ recipe, key, category }) => {
           width: 200,
           minHeight: 250,
         }}
-        key={key}
+        key={recipe?.idMeal}
       >
         <CardMedia
           sx={{ height: 140, width: 200, border: "solid 1px yellow" }}
@@ -54,15 +58,18 @@ export const RecipeCard = ({ recipe, key, category }) => {
               size={"small"}
               sx={{ color: "#fe5e7f", p: 0 }}
               cursor={"pointer"}
+              onClick={handleClick}
             >
-              <FavoriteBorder fontSize={"small"} />
+              {isFavourite ? (
+                <Favorite fontSize="small" />
+              ) : (
+                <FavoriteBorder fontSize={"small"} />
+              )}
             </IconButton>
           </Stack>
 
           <Tooltip title={fullRecipeTitle}>
             <Typography
-              // border={"solid 1px"}
-              // gutterBottom
               variant={"body2"}
               component="div"
               fontWeight={"600"}
@@ -79,4 +86,5 @@ export const RecipeCard = ({ recipe, key, category }) => {
 RecipeCard.propTypes = {
   recipe: PropTypes.object,
   key: PropTypes.any,
+  category: PropTypes.string,
 };

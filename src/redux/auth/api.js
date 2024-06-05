@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { HTTP_METHODS } from "../../constants.js";
 import { baseQuery } from "../apiService.js";
 import { REGISTER, SIGN_IN, USERS } from "../../helpers/url.js";

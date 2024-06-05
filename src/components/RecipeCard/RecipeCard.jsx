@@ -10,12 +10,11 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
-import { useState } from "react";
 import { useRecipeCard } from "./hooks/useRecipeCard.js";
 
-export const RecipeCard = ({ recipe, key, category }) => {
-  const { recipeTitle, isFavourite, handleClick, fullRecipeTitle } =
-    useRecipeCard(recipe);
+export const RecipeCard = ({ recipe, key, category, favourites }) => {
+  const { recipeTitle, isFavourite, handleClick, fullRecipeTitle, isLoading } =
+    useRecipeCard(recipe, favourites);
   return (
     <Box m={1} pr={0.5} my={2}>
       <Card
@@ -23,11 +22,11 @@ export const RecipeCard = ({ recipe, key, category }) => {
           width: 200,
           minHeight: 250,
         }}
-        key={recipe?.idMeal}
+        key={key}
       >
         <CardMedia
           sx={{ height: 140, width: 200 }}
-          image={recipe?.strMealThumb}
+          image={recipe?.strMealThumb || recipe?.image}
           title="green iguana"
         />
 
@@ -38,15 +37,16 @@ export const RecipeCard = ({ recipe, key, category }) => {
               component="div"
               textTransform={"uppercase"}
             >
-              {category}
+              {category || recipe?.category}
             </Typography>
             <IconButton
               size={"small"}
               sx={{ color: "#fe5e7f", p: 0 }}
               cursor={"pointer"}
               onClick={handleClick}
+              disabled={favourites || isLoading}
             >
-              {isFavourite ? (
+              {isFavourite || favourites ? (
                 <Favorite fontSize="small" />
               ) : (
                 <FavoriteBorder fontSize={"small"} />
@@ -73,4 +73,5 @@ RecipeCard.propTypes = {
   recipe: PropTypes.object,
   key: PropTypes.any,
   category: PropTypes.string,
+  favourites: PropTypes.bool,
 };

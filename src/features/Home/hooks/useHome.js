@@ -13,7 +13,7 @@ export const useHome = () => {
     }
   };
 
-  const { data: recipesByCategory } = useGetRecipesByCategoryQuery(category); //hardcoded for now
+  const { data: recipesByCategory } = useGetRecipesByCategoryQuery(category);
 
   const { user } = useAuthContext();
 

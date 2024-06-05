@@ -1,19 +1,22 @@
-import { RecipeCard } from "../../components/RecipeCard/RecipeCard.jsx";
-import { Grid } from "@mui/material";
-import { useAuthContext } from "../../hooks/useAuthContext.js";
+import { Box } from "@mui/material";
+import { useHome } from "./hooks/useHome.js";
+import React from "react";
+import { CategoryBar } from "./components/CategoryBar.jsx";
+import { RecipePanel } from "../../components/RecipeCard/RecipePanel.jsx";
 
 export const Home = () => {
-  const { user } = useAuthContext();
-  console.log(user && user.email);
+  const { category, handleCategory, user, recipesByCategory, categories } =
+    useHome();
   return (
-    <>
-      <Grid container spacing={2}>
-        hello {user && user.email}
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-        <RecipeCard />
-      </Grid>
-    </>
+    <React.Fragment>
+      <Box>
+        <CategoryBar
+          categories={categories}
+          handleCategory={handleCategory}
+          category={category}
+        />
+        <RecipePanel recipes={recipesByCategory} category={category} />
+      </Box>
+    </React.Fragment>
   );
 };

@@ -22,14 +22,14 @@ export const recipesApi = createApi({
     getFavouriteRecipes: builder.query({
       query: () => ({
         //
-        url: `${RECIPES}/${FAVOURITES}`,
+        url: `${RECIPES}/${FAVOURITES}/all`,
         providesTags: [TAGS.RECIPES],
       }),
     }),
     //create Favourite Recipe
     createFavouriteRecipe: builder.mutation({
       query: (mealId) => ({
-        url: `${RECIPES}/${FAVOURITES}`,
+        url: `${RECIPES}/${FAVOURITES}/create`,
         method: HTTP_METHODS.POST,
         body: mealId,
         providesTags: [TAGS.RECIPES],

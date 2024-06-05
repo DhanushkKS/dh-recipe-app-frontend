@@ -4,6 +4,8 @@ import {
   Card,
   CardContent,
   CardMedia,
+  IconButton,
+  Stack,
   SvgIcon,
   Tooltip,
   Typography,
@@ -15,39 +17,61 @@ import { FavoriteBorder, HeartBroken } from "@mui/icons-material";
 export const RecipeCard = ({ recipe, key, category }) => {
   const fullRecipeTitle = recipe?.strMeal;
   const recipeTitle =
-    fullRecipeTitle.length > 20
-      ? `${fullRecipeTitle.slice(0, 17)}...`
+    fullRecipeTitle.length > 40
+      ? `${fullRecipeTitle.slice(0, 37)}...`
       : `${fullRecipeTitle}`;
   return (
-    <Box m={1}>
-      <Card sx={{ width: 200, maxHeight: 300 }} key={key}>
+    <Box m={1} pr={0.5} my={2}>
+      <Card
+        sx={{
+          width: 200,
+          minHeight: 250,
+        }}
+        key={key}
+      >
         <CardMedia
-          sx={{ height: 140, width: 180 }}
+          sx={{ height: 140, width: 200, border: "solid 1px yellow" }}
           image={recipe?.strMealThumb}
           title="green iguana"
         />
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant={"caption"}
-            component="div"
-            textTransform={"uppercase"}
+
+        <CardContent sx={{ border: "solid 2px pink", pl: 1 }}>
+          <Stack
+            direction="row"
+            spacing={1}
+            mb={1}
+            border={"solid 1px green"}
+            alignItems="center"
           >
-            {category}
-          </Typography>
-          <SvgIcon>
-            <FavoriteBorder />
-          </SvgIcon>
+            <Typography
+              variant={"caption"}
+              component="div"
+              textTransform={"uppercase"}
+            >
+              {category}
+            </Typography>
+            <IconButton
+              size={"small"}
+              sx={{ color: "#fe5e7f", p: 0 }}
+              cursor={"pointer"}
+            >
+              <FavoriteBorder fontSize={"small"} />
+            </IconButton>
+          </Stack>
+
           <Tooltip title={fullRecipeTitle}>
-            <Typography gutterBottom variant={"subtitle1"} component="div">
+            <Typography
+              // border={"solid 1px"}
+              // gutterBottom
+              variant={"body2"}
+              component="div"
+              fontWeight={"600"}
+              fontSize={"0.8rem"}
+            >
               {recipeTitle}
             </Typography>
           </Tooltip>
         </CardContent>
-        <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions>
       </Card>
     </Box>
   );

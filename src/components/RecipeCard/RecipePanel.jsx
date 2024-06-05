@@ -11,7 +11,7 @@ export const RecipePanel = ({ recipes, category }) => {
         sx={{ border: "solid 1px  blue" }}
         display={"flex"}
         flexWrap={"wrap"}
-        justifyContent={"space-between"}
+        justifyContent={"flex-start"}
       >
         {recipes &&
           recipes.map((recipe, index) => (

@@ -10,11 +10,13 @@ export const TAGS = {
 export const recipesApi = createApi({
   reducerPath: "recipesApi",
   baseQuery,
+
   endpoints: (builder) => ({
     //getByCategory
     getRecipesByCategory: builder.query({
       query: (category) => ({
         url: `${RECIPES}/${category}`,
+
         providesTags: [TAGS.RECIPES],
       }),
     }),

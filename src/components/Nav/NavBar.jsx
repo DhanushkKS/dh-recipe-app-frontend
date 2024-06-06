@@ -1,13 +1,17 @@
-import { Box, Grid, Link } from "@mui/material";
+import { Box, Grid, IconButton, Link } from "@mui/material";
 import MainLogo from "../../assets/main-logo.svg"; // Import the SVG file
 import { Link as RouterLink } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavBar } from "./hooks/useNavBar.js";
+import { useAuthContext } from "../../hooks/useAuthContext.js";
 
 const MainLogoIcon = (props) => (
   <img src={MainLogo} alt="logo" style={{ maxWidth: "100px" }} />
 );
 
 export const NavBar = () => {
+  const { handleLogout } = useNavBar();
+  const { user } = useAuthContext();
   return (
     <>
       <Box component="nav" display="flex" width="100%">
@@ -52,7 +56,9 @@ export const NavBar = () => {
             </Grid>
           </Grid>
           <Grid p={2} item xs={4} display="flex" justifyContent={"flex-end"}>
-            <LogoutIcon />
+            <IconButton onClick={handleLogout} title={"Logout"}>
+              <LogoutIcon />
+            </IconButton>
           </Grid>
         </Grid>
       </Box>

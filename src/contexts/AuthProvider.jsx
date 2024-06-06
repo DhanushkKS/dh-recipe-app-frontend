@@ -1,13 +1,12 @@
 import { useEffect, useReducer } from "react";
 import { AuthContext } from "./AuthContext.js";
 import PropTypes from "prop-types";
+import { LOGIN, LOGOUT } from "../constants.js";
 //constants
-const LOGIN = "LOGIN";
-const LOGOUT = "LOGOUT";
 const initialState = {
   user: null,
 };
-const authReducer = (state, action) => {
+export const authReducer = (state, action) => {
   switch (action.type) {
     case LOGIN:
       return { user: action.payload };

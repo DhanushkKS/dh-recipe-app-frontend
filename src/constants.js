@@ -29,3 +29,6 @@ export const HTTP_STATUS_CODES = {
   404: "Not Found",
   500: "Internal Server Error",
 };
+
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";

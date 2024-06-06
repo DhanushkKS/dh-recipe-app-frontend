@@ -1,5 +1,4 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { useAuthContext } from "../hooks/useAuthContext.js";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${import.meta.env.VITE_API_ENDPOINT}/`,

@@ -1,6 +1,7 @@
 import { useAuthContext } from "../../../hooks/useAuthContext.js";
 import { useLocalStorage } from "../../../hooks/useLocalStorage.js";
 import { LOGOUT } from "../../../constants.js";
+import { useDispatch } from "../../../store/index.js";
 
 export const useNavBar = () => {
   //
@@ -10,4 +11,6 @@ export const useNavBar = () => {
     removeItem("user");
     dispatch({ type: LOGOUT });
   };
+
+  return { handleLogout };
 };

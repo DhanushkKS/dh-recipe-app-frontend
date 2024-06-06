@@ -1,4 +1,4 @@
-import { Box, Grid, Link } from "@mui/material";
+import { Box, Grid, IconButton, Link } from "@mui/material";
 import MainLogo from "../../assets/main-logo.svg"; // Import the SVG file
 import { Link as RouterLink } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -52,7 +52,9 @@ export const NavBar = () => {
             </Grid>
           </Grid>
           <Grid p={2} item xs={4} display="flex" justifyContent={"flex-end"}>
-            <LogoutIcon />
+            <IconButton>
+              <LogoutIcon />
+            </IconButton>
           </Grid>
         </Grid>
       </Box>

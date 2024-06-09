@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "private": true,
+  "homepage": "https://dhrecipeapp.azurewebsites.net/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

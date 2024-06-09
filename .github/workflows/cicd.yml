@@ -53,4 +53,4 @@ jobs:
           app-name: dhrecipeapp
           slot-name: 'production'
           publish-profile: ${{ secrets.AZURE_WEB_APP_PUBLISH_PROFILE }}
-          package : .
+          package : ./dist

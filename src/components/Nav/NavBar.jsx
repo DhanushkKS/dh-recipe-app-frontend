@@ -12,7 +12,6 @@ const MainLogoIcon = (props) => (
 export const NavBar = () => {
   const { handleLogout } = useNavBar();
   const { user } = useAuthContext();
-  console.log("User is", user.token);
   return (
     <>
       <Box component="nav" display="flex" width="100%">

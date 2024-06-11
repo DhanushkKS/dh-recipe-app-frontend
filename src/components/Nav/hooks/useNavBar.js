@@ -12,7 +12,7 @@ export const useNavBar = () => {
   const handleLogout = () => {
     removeItem("user");
     dispatch({ type: LOGOUT });
-    recipesDispatch(setRecipes(null));
+    // recipesDispatch(setRecipes(null));
   };
 
   return { handleLogout };

@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { useRecipeCard } from "./hooks/useRecipeCard.js";
 
-export const RecipeCard = ({ recipe, key, category, favourites }) => {
+export const RecipeCard = ({ recipe, rKey, category, favourites }) => {
   const { recipeTitle, isFavourite, handleClick, fullRecipeTitle, isLoading } =
     useRecipeCard(recipe, favourites);
   return (
@@ -22,7 +22,7 @@ export const RecipeCard = ({ recipe, key, category, favourites }) => {
           width: 200,
           minHeight: 250,
         }}
-        key={key}
+        key={rKey}
       >
         <CardMedia
           sx={{ height: 140, width: 200 }}
@@ -71,7 +71,7 @@ export const RecipeCard = ({ recipe, key, category, favourites }) => {
 };
 RecipeCard.propTypes = {
   recipe: PropTypes.object,
-  key: PropTypes.any,
+  rKey: PropTypes.any,
   category: PropTypes.string,
   favourites: PropTypes.bool,
 };

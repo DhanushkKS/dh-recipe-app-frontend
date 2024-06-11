@@ -3,9 +3,10 @@ import generateInputField from "../../../helpers/generateInputField.jsx";
 import { useRegisterMutation } from "../../../redux/auth/api.js";
 import { useLocalStorage } from "../../../hooks/useLocalStorage.js";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useRequestFormik = () => {
-  //
+  const navigate = useNavigate();
   const { setItem } = useLocalStorage("user");
   const [register, { error, data, isLoading, isSuccess, isError }] =
     useRegisterMutation();
@@ -16,14 +17,19 @@ const useRequestFormik = () => {
   };
   useEffect(() => {
     if (data?.token) {
-      // console.log("response", data);
-      // window.localStorage.setItem("user", JSON.stringify(data));
       setItem("user", data);
     }
     if (isError) {
       console.log(error);
     }
   }, [setItem, data, error, isError]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/");
+      window.location.reload();
+    }
+  }, [isSuccess, navigate]);
 
   const formik = useFormik({
     initialValues: {
@@ -59,6 +65,7 @@ const useRequestFormik = () => {
     renderFields,
     handleSubmit,
     handleChange,
+    isLoading,
   };
 };
 export default useRequestFormik;

@@ -16,6 +16,7 @@ export const RecipePanel = ({ recipes, category, favourites }) => {
           recipes.map((recipe, index) => (
             <RecipeCard
               key={index}
+              rKey={index}
               recipe={recipe}
               category={category}
               favourites={favourites}
@@ -26,6 +27,7 @@ export const RecipePanel = ({ recipes, category, favourites }) => {
   );
 };
 RecipePanel.propTypes = {
-  recipes: PropTypes.object,
+  recipes: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   favourites: PropTypes.bool,
+  category: PropTypes.string,
 };

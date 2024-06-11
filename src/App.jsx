@@ -18,7 +18,6 @@ import { FavouriteItems } from "./features/Favourite/index.jsx";
 function App() {
   //
   const { user } = useAuthContext();
-  console.log("User is", user);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>

@@ -44,8 +44,8 @@ const useRequestFormik = () => {
       email: "",
       password: "",
     },
-    onSubmit: (values) => {
-      onLoginSubmit(values);
+    onSubmit: async (values) => {
+      await onLoginSubmit(values);
     },
   });
   const renderFields = (field) => {

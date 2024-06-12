@@ -3,7 +3,6 @@ import MainLogo from "../../assets/main-logo.svg"; // Import the SVG file
 import { Link as RouterLink } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavBar } from "./hooks/useNavBar.js";
-import { useAuthContext } from "../../hooks/useAuthContext.js";
 
 const MainLogoIcon = (props) => (
   <img src={MainLogo} alt="logo" style={{ maxWidth: "100px" }} />
@@ -19,7 +18,11 @@ export const NavBar = () => {
             <MainLogoIcon />
           </Grid>
           <Grid item xs={4}>
-            <Grid container>
+            <Grid
+              container
+              sx={{ textTransform: "upperCase" }}
+              fontFamily={"roboto"}
+            >
               <Grid
                 item
                 xs={6}
@@ -28,12 +31,10 @@ export const NavBar = () => {
                 justifyContent={"flex-end"}
               >
                 <Link
-                  fontFamily={"roboto"}
                   component={RouterLink}
                   to={"home"}
                   variant={"text"}
                   href={"#"}
-                  sx={{ textTransform: "upperCase" }}
                   underline={"none"}
                   color={"black"}
                 >
@@ -48,7 +49,6 @@ export const NavBar = () => {
                 justifyContent={"flex-start"}
               >
                 <Link
-                  fontFamily={"roboto"}
                   component={RouterLink}
                   to={"favourites"}
                   variant={"text"}

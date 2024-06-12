@@ -14,6 +14,7 @@ import { Home } from "./features/Home/index.jsx";
 import { useAuthContext } from "./hooks/useAuthContext.js";
 import { RootLayout } from "./components/RootLayout.jsx";
 import { FavouriteItems } from "./features/Favourite/index.jsx";
+import { colors, createTheme, ThemeProvider } from "@mui/material";
 
 function App() {
   //
@@ -44,13 +45,30 @@ function App() {
         ></Route>
       </>,
     ),
-    //
   );
+
+  const theme = createTheme({
+    components: {
+      MuiToggleButton: {
+        styleOverrides: {},
+      },
+    },
+    palette: {
+      primary: {
+        main: "#fe5e7f",
+
+        50: colors.pink[50],
+      },
+    },
+  });
+
   return (
     <>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </ThemeProvider>
     </>
   );
 }

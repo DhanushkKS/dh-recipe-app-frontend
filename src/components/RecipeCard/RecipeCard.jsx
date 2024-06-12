@@ -41,7 +41,8 @@ export const RecipeCard = ({ recipe, rKey, category, favourites }) => {
             </Typography>
             <IconButton
               size={"small"}
-              sx={{ color: "#fe5e7f", p: 0 }}
+              color={"primary"}
+              // sx={{ color: "", p: 0 }}
               cursor={"pointer"}
               onClick={handleClick}
               disabled={favourites || isLoading}

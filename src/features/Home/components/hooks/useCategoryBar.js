@@ -1,5 +1,3 @@
-import { colors } from "@mui/material";
-
 export const useCategoryBar = () => {
   const activeButtonStyles = {
     backgroundColor: "primary.main",

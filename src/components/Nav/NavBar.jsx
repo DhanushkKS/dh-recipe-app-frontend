@@ -15,7 +15,9 @@ export const NavBar = () => {
       <Box component="nav" display="flex" width="100%">
         <Grid container px={0}>
           <Grid item xs={4}>
-            <MainLogoIcon />
+            <Link component={RouterLink} to="/">
+              <MainLogoIcon />
+            </Link>
           </Grid>
           <Grid item xs={4}>
             <Grid

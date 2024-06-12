@@ -56,7 +56,6 @@ function App() {
     palette: {
       primary: {
         main: "#fe5e7f",
-
         50: colors.pink[50],
       },
     },

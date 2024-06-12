@@ -9,13 +9,15 @@ const MainLogoIcon = (props) => (
 );
 
 export const NavBar = () => {
-  const { handleLogout } = useNavBar();
+  const { handleLogout, activeNav, handleActiveNav } = useNavBar();
   return (
     <>
       <Box component="nav" display="flex" width="100%">
         <Grid container px={0}>
           <Grid item xs={4}>
-            <MainLogoIcon />
+            <Link component={RouterLink} to="/">
+              <MainLogoIcon />
+            </Link>
           </Grid>
           <Grid item xs={4}>
             <Grid
@@ -31,10 +33,11 @@ export const NavBar = () => {
                 justifyContent={"flex-end"}
               >
                 <Link
+                  fontWeight={activeNav === "/home" ? "900" : "normal"}
+                  onClick={handleActiveNav.bind(null, "/home")}
                   component={RouterLink}
                   to={"home"}
                   variant={"text"}
-                  href={"#"}
                   underline={"none"}
                   color={"black"}
                 >
@@ -49,10 +52,11 @@ export const NavBar = () => {
                 justifyContent={"flex-start"}
               >
                 <Link
+                  fontWeight={activeNav === "/favourites" ? "900" : "normal"}
+                  onClick={handleActiveNav.bind(null, "/favourites")}
                   component={RouterLink}
                   to={"favourites"}
                   variant={"text"}
-                  href={"#"}
                   underline={"none"}
                   color={"black"}
                 >

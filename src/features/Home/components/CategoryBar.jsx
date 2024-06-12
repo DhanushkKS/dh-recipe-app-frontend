@@ -1,4 +1,4 @@
-import { Grid, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { colors, Grid, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { useCategoryBar } from "./hooks/useCategoryBar.js";
 import PropTypes from "prop-types";
 
@@ -27,7 +27,12 @@ export const CategoryBar = ({ categories, category, handleCategory }) => {
                   aria-label={category}
                   sx={{
                     width: "80px",
-                    color: "#fe5e7f",
+                    color: "primary.main",
+                    bgcolor: "primary.50",
+                    "&:hover": {
+                      color: colors.pink[50],
+                      backgroundColor: "primary.main",
+                    },
                     "&.Mui-selected": activeButtonStyles,
                   }}
                 >

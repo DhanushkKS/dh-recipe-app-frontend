@@ -39,7 +39,7 @@ export const NavBar = () => {
                   to={"home"}
                   variant={"text"}
                   underline={"none"}
-                  color={"black"}
+                  color={"primary"}
                 >
                   Home
                 </Link>
@@ -58,7 +58,7 @@ export const NavBar = () => {
                   to={"favourites"}
                   variant={"text"}
                   underline={"none"}
-                  color={"black"}
+                  color={"primary"}
                 >
                   Favourite
                 </Link>

@@ -56,7 +56,7 @@ export const PrimaryDetailsContainer = ({
             <CardHeader
               title={
                 <Typography variant={"h5"} component="div">
-                  {title} Netlify test
+                  {title}
                 </Typography>
               }
             />

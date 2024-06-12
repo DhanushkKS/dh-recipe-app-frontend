@@ -1,9 +1,12 @@
+import { colors } from "@mui/material";
+
 export const useCategoryBar = () => {
   const activeButtonStyles = {
-    backgroundColor: "#fe5e7f",
-    color: "white", // Optional: to change the text color when selected
+    backgroundColor: "primary.main",
+    color: "primary.50",
     "&:hover": {
-      backgroundColor: "#fe5e7f !important",
+      color: "primary.main",
+      backgroundColor: "primary.50",
     },
   };
   return { activeButtonStyles };

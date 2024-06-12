@@ -70,7 +70,11 @@ export const NavBar = () => {
             display="flex"
             justifyContent={"flex-end"}
           >
-            <IconButton onClick={handleLogout} title={"Logout"}>
+            <IconButton
+              onClick={handleLogout}
+              title={"Logout"}
+              color={"primary"}
+            >
               <LogoutIcon />
             </IconButton>
           </Grid>

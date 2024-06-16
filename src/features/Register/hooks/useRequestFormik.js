@@ -4,6 +4,7 @@ import { useRegisterMutation } from "../../../redux/auth/api.js";
 import { useLocalStorage } from "../../../hooks/useLocalStorage.js";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { validationSchema } from "../validationSchema/validationSchema.js";
 
 const useRequestFormik = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const useRequestFormik = () => {
       password: "",
       confirmPassword: "",
     },
+    validationSchema: validationSchema,
     onSubmit: async (values) => {
       const password = values["password"];
       const { confirmPassword, ...rest } = values;

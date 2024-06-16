@@ -4,6 +4,7 @@ import { useSignInMutation } from "../../../redux/auth/api.js";
 import { useEffect, useRef } from "react";
 import { useLocalStorage } from "../../../hooks/useLocalStorage.js";
 import { useNavigate } from "react-router-dom";
+import { validationSchema } from "../validationSchema/validationSchema.js";
 
 const useRequestFormik = () => {
   const navigate = useNavigate();
@@ -44,6 +45,7 @@ const useRequestFormik = () => {
       email: "",
       password: "",
     },
+    validationSchema: validationSchema,
     onSubmit: async (values) => {
       await onLoginSubmit(values);
     },

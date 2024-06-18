@@ -1,4 +1,4 @@
-import { Box, Grid, IconButton, Link } from "@mui/material";
+import { Box, Grid, IconButton, Link, Typography } from "@mui/material";
 import MainLogo from "../../assets/main-logo.svg"; // Import the SVG file
 import { Link as RouterLink } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -9,7 +9,7 @@ const MainLogoIcon = (props) => (
 );
 
 export const NavBar = () => {
-  const { handleLogout, activeNav, handleActiveNav } = useNavBar();
+  const { handleLogout, activeNav, handleActiveNav, userEmail } = useNavBar();
   return (
     <>
       <Box component="nav" display="flex" width="100%">
@@ -67,6 +67,7 @@ export const NavBar = () => {
           </Grid>
 
           <Grid
+            sx={{ border: "solid 1px red" }}
             py={0}
             pr={1}
             item
@@ -74,13 +75,26 @@ export const NavBar = () => {
             display="flex"
             justifyContent={"flex-end"}
           >
-            <IconButton
-              onClick={handleLogout}
-              title={"Logout"}
-              color={"primary"}
+            <Grid
+              container
+              sx={{ border: "solid 1px green" }}
+              alignItems={"center"}
             >
-              <LogoutIcon />
-            </IconButton>
+              <Grid item xs={10} display={"flex"} justifyContent={"flex-end"}>
+                <Typography variant={"subtitle2"} pb={0} color={"primary"}>
+                  {userEmail}
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <IconButton
+                  onClick={handleLogout}
+                  title={"Logout"}
+                  color={"primary"}
+                >
+                  <LogoutIcon />
+                </IconButton>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Box>

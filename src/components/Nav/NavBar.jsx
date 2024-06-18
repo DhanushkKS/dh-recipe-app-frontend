@@ -67,7 +67,6 @@ export const NavBar = () => {
           </Grid>
 
           <Grid
-            sx={{ border: "solid 1px red" }}
             py={0}
             pr={1}
             item
@@ -75,11 +74,7 @@ export const NavBar = () => {
             display="flex"
             justifyContent={"flex-end"}
           >
-            <Grid
-              container
-              sx={{ border: "solid 1px green" }}
-              alignItems={"center"}
-            >
+            <Grid container alignItems={"center"}>
               <Grid item xs={10} display={"flex"} justifyContent={"flex-end"}>
                 <Typography variant={"subtitle2"} pb={0} color={"primary"}>
                   {userEmail}

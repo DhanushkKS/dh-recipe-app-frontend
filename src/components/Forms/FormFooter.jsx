@@ -1,5 +1,11 @@
 import CardActions from "@mui/material/CardActions";
-import { Button, Grid, Link, Typography } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material";
 import PropTypes from "prop-types";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -19,6 +25,9 @@ export const FormFooter = ({ columns, isLogin, fullWidth, isLoading }) => {
             >
               {isLogin && "Sign In"}
               {!isLogin && "Create Account"}
+              {isLoading && (
+                <CircularProgress size={24} sx={{ marginLeft: 2 }} />
+              )}
             </Button>
           </Grid>
         </Grid>

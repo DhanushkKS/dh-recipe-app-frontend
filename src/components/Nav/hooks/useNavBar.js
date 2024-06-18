@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export const useNavBar = () => {
   //
+  const { user } = useAuthContext();
   const [activeNav, setActiveNav] = useState("/home");
   const { dispatch } = useAuthContext();
   const { dispatch: recipesDispatch } = useDispatch();
@@ -19,5 +20,7 @@ export const useNavBar = () => {
   const handleActiveNav = (navLink) => {
     setActiveNav(navLink);
   };
-  return { handleLogout, handleActiveNav, activeNav };
+
+  const userEmail = user?.email;
+  return { handleLogout, handleActiveNav, activeNav, userEmail };
 };

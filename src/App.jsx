@@ -8,6 +8,7 @@ import { useAuthContext } from "./hooks/useAuthContext.js";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme/index.js";
 import { useRouters } from "./routes/index.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.js";
 
 //lazy
 
@@ -19,7 +20,9 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <RouterProvider router={router} />
+          <ErrorBoundary>
+            <RouterProvider router={router} />
+          </ErrorBoundary>
         </Provider>
       </ThemeProvider>
     </>

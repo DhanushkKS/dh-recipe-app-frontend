@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import { useHome } from "./hooks/useHome.js";
 import React from "react";
 import { CategoryBar } from "./components/CategoryBar.jsx";

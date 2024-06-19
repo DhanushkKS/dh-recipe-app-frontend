@@ -27,7 +27,7 @@ export const RecipeCard = ({ recipe, rKey, category, favourites }) => {
         <CardMedia
           sx={{ height: 140, width: 200 }}
           image={recipe?.strMealThumb || recipe?.image}
-          title="green iguana"
+          title={recipeTitle}
         />
 
         <CardContent sx={{ pl: 1 }}>
